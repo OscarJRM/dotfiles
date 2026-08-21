@@ -1,80 +1,71 @@
-# ⚡ Personal Dotfiles & Neovim Configuration
+# Dotfiles & Neovim Configuration
 
-Welcome to my personal developer environment and custom Neovim setup! This repository is configured for high-efficiency full-stack software development across **TypeScript**, **Angular**, **Java**, and **Microservices**.
-
----
-
-## 🎨 Visual & Functional Highlights
-
-* 🌙 **Theme:** TokyoNight (Storm style)
-* 🚀 **Completion:** `blink.cmp` + Friendly Snippets
-* 🤖 **AI Assistance:** GitHub Copilot (inline auto-suggestions)
-* 🔍 **Fuzzy Search:** `telescope.nvim` with live LSP reference tracking & code previews
-* 🛠️ **LSP Manager:** `mason.nvim` + `mason-lspconfig`
-* 📁 **Explorer & Status:** `nvim-tree.lua` + `lualine.nvim`
-* 📑 **Buffer Tabs:** `bufferline.nvim` + `bufdelete.nvim`
-* ⚡ **Diagnostics:** Error-Lens style inline error text
-* ⚡ **Code Folding:** `nvim-ufo` (VS Code-style fold preview)
+A personal, production-ready Neovim environment tailored for full-stack TypeScript, Angular, Java, and microservice architectures.
 
 ---
 
-## 🛠️ Supported Language Servers (LSP)
+## Overview
 
-| Language | LSP Server | Notes |
+This repository contains the configuration for a fast, keyboard-driven development environment built on top of native Neovim APIs and `lazy.nvim`. It integrates Language Server Protocols (LSP), Treesitter syntax highlighting, asynchronous completion, and interactive reference tracking.
+
+### Core Features
+
+* **Completion & AI:** Asynchronous completion powered by `blink.cmp` with inline GitHub Copilot suggestions.
+* **Fuzzy Finder:** `telescope.nvim` configured with live code preview and full reference tracking (`gr`).
+* **LSP Integration:** Pre-configured language servers for TypeScript (`ts_ls`), Angular (`angularls`), Java (`jdtls`), HTML/CSS, and Lua (`lua_ls`).
+* **UI & Ergonomics:** TokyoNight Storm theme, `lualine.nvim` statusline, `bufferline.nvim` tabs, and `nvim-ufo` code folding.
+
+---
+
+## Language Servers & Tooling
+
+| Language / Framework | Server | Highlights |
 | :--- | :--- | :--- |
-| **TypeScript / JS** | `ts_ls` + `eslint` | ESLint v9 & legacy compatibility |
-| **Angular** | `angularls` | Auto-scoped to projects with `angular.json` |
-| **Java** | `nvim-jdtls` | Eclipse JDTLS + Lombok support |
-| **HTML / CSS** | `html`, `cssls`, `emmet_ls` | Emmet snippet expansions |
-| **Lua** | `lua_ls` | Neovim Lua API support |
+| **TypeScript / JS** | `ts_ls`, `eslint` | Full TypeScript diagnostics & ESLint validation |
+| **Angular** | `angularls` | Scoped to projects containing `angular.json` |
+| **Java** | `nvim-jdtls` | Eclipse JDTLS with Lombok agent support |
+| **Markup & Styles** | `html`, `cssls`, `emmet_ls` | Emmet snippet expansion & CSS validation |
+| **Lua** | `lua_ls` | Native Neovim runtime diagnostics |
 
 ---
 
-## ⌨️ Keybindings Reference
+## Key Mappings
 
-| Mode | Shortcut | Action |
-| :--- | :--- | :--- |
-| **Normal** | `gd` | Go to Definition |
-| **Normal** | `gr` | Go to References *(Telescope with live code preview)* |
-| **Normal** | `K` | Hover Documentation / Fold preview |
-| **Normal** | `<leader>ff` | Search Files *(Telescope)* |
-| **Normal** | `<leader>fg` | Live Grep text search |
-| **Normal** | `<leader>e` | Toggle File Explorer (`nvim-tree`) |
-| **Normal** | `<leader>cf` | Format code (ESLint / Prettier / LSP) |
-| **Normal** | `<Tab>` / `<S-Tab>` | Cycle next/prev buffer tab |
-| **Normal** | `<leader>x` | Close active buffer tab |
-| **Normal** | `<C-o>` / `<C-i>` | Jump Back / Jump Forward in history |
+### LSP & Code Navigation
+* `gd` — Jump to Definition
+* `gr` — Find References (Telescope with live code preview)
+* `K` — Hover Documentation / Code fold preview
+* `<C-o>` / `<C-i>` — Jump Backward / Forward in cursor history
+
+### Workspace & Explorer
+* `<leader>ff` — Find Files (Telescope)
+* `<leader>fg` — Live Grep text search
+* `<leader>e` — Toggle File Explorer (`nvim-tree`)
+
+### Formatting & Buffers
+* `<Tab>` / `<S-Tab>` — Cycle Next / Previous buffer tab
+* `<leader>x` — Close current buffer
+* `<leader>cf` — Format document (ESLint / Prettier / LSP)
 
 ---
 
-## 📦 Installation Guide
+## Installation
 
-To use this configuration on any computer (macOS, Linux, or Windows):
-
-### 🍎 macOS / 🐧 Linux:
+### macOS / Linux
 ```bash
-# 1. Backup existing config (if any)
-mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
-
-# 2. Clone this repository directly into ~/.config/nvim
 git clone git@github.com-ankairos:OscarJRM/dotfiles.git ~/.config/nvim
-
-# 3. Open Neovim (lazy.nvim will automatically bootstrap plugins)
 nvim
 ```
 
-### 🪟 Windows (PowerShell):
+### Windows (PowerShell)
 ```powershell
-# Clone into AppData/Local/nvim
 git clone git@github.com-ankairos:OscarJRM/dotfiles.git $env:LOCALAPPDATA\nvim
-
-# Launch Neovim
 nvim
 ```
 
 ---
 
-## 📜 Author
+## Author
 
 **Oscar Joel Ramírez Manzano**  
 GitHub: [@OscarJRM](https://github.com/OscarJRM)
