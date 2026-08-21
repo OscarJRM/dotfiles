@@ -44,7 +44,9 @@ This repository contains the configuration for a fast, keyboard-driven developme
 
 ### Formatting & Buffers
 * `<Tab>` / `<S-Tab>` — Cycle Next / Previous buffer tab
-* `<leader>x` — Close current buffer
+* `<leader>x` — Close current buffer tab
+* `<leader>xo` — Close all OTHER buffer tabs
+* `<leader>xa` — Close ALL buffer tabs
 * `<leader>cf` — Format document (ESLint / Prettier / LSP)
 
 ### Code Folding (nvim-ufo)

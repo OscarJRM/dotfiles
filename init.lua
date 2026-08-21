@@ -71,12 +71,29 @@ require("lazy").setup({
   },
   {
     'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('nvim-web-devicons').setup({
+        override = {
+          ["service.ts"] = { icon = "󰌆", color = "#e0af68", name = "ServiceTs" },
+          ["controller.ts"] = { icon = "⚙", color = "#e0af68", name = "ControllerTs" },
+          ["module.ts"] = { icon = "󰏗", color = "#f7768e", name = "ModuleTs" },
+          ["spec.ts"] = { icon = "🧪", color = "#0db9d7", name = "SpecTs" },
+          ["dto.ts"] = { icon = "󰈙", color = "#7dcfff", name = "DtoTs" },
+          ["entity.ts"] = { icon = "󰆼", color = "#bb9af7", name = "EntityTs" },
+        },
+      })
+    end,
   },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('nvim-tree').setup({
+        on_attach = function(bufnr)
+          local api = require('nvim-tree.api')
+          api.config.mappings.default_on_attach(bufnr)
+          vim.keymap.set('n', '-', '<cmd>wincmd p<CR>', { buffer = bufnr, desc = 'Jump back to code window' })
+        end,
         filters = {
           dotfiles = false,
           git_ignored = false,
@@ -505,7 +522,13 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- Search Files
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})  -- Search Text inside files
 vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status (Telescope)' })
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' })
-vim.keymap.set('n', '-', '<cmd>NvimTreeFindFile<CR>', { desc = 'Reveal current file in explorer' })
+vim.keymap.set('n', '-', function()
+  if vim.bo.filetype == 'NvimTree' then
+    vim.cmd('wincmd p')
+  else
+    vim.cmd('NvimTreeFindFile')
+  end
+end, { desc = 'Toggle focus between code and file explorer' })
 
 -- Format code using ESLint (Prettier) or LSP
 vim.keymap.set('n', '<leader>cf', function()
@@ -520,6 +543,8 @@ end, { desc = 'Format code (ESLint/Prettier)' })
 vim.keymap.set('n', '<Tab>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer tab' })
 vim.keymap.set('n', '<S-Tab>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer tab' })
 vim.keymap.set('n', '<leader>x', '<cmd>Bdelete<CR>', { desc = 'Close buffer tab' })
+vim.keymap.set('n', '<leader>xo', '<cmd>BufferLineCloseOthers<CR>', { desc = 'Close all other buffer tabs' })
+vim.keymap.set('n', '<leader>xa', '<cmd>bufdo Bdelete<CR>', { desc = 'Close all buffer tabs' })
 vim.keymap.set('n', '<leader>bl', '<cmd>BufferLineMoveMoveNext<CR>', { desc = 'Move tab right' })
 vim.keymap.set('n', '<leader>bh', '<cmd>BufferLineMoveMousePrev<CR>', { desc = 'Move tab left' })
 
