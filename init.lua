@@ -455,7 +455,7 @@ require("lazy").setup({
       require('ufo').setup({
         -- Use treesitter first, then LSP as fallback, then indent
         provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter', 'indent' }
+          return { 'lsp', 'indent' }
         end,
         -- Show number of folded lines + a preview of the content (like VS Code)
         fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)

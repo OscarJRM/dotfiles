@@ -47,6 +47,13 @@ This repository contains the configuration for a fast, keyboard-driven developme
 * `<leader>x` — Close current buffer
 * `<leader>cf` — Format document (ESLint / Prettier / LSP)
 
+### Code Folding (nvim-ufo)
+* `zc` — Collapse / Fold current block
+* `zo` — Expand / Open current block
+* `za` — Toggle fold (Open / Close)
+* `zM` — Collapse ALL blocks in file
+* `zR` — Expand ALL blocks in file
+
 ---
 
 ## Installation
